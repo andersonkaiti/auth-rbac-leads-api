@@ -5,7 +5,7 @@ import type { Request, Response } from 'express'
 import { z } from 'zod'
 
 export const createLeadSchema = z.object({
-  name: z.string().max(NAME_MAX_LENGTH),
+  name: z.string().min(1).max(NAME_MAX_LENGTH),
   email: z.email().max(EMAIL_MAX_LENGTH),
 })
 
