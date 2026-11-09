@@ -209,7 +209,7 @@ pnpm coverage      # com relatório de cobertura
 Os testes de segurança ficam em `tests/security/` e rodam junto com o restante da suíte. Para rodar só essa pasta:
 
 ```bash
-pnpm exec vitest run tests/security
+pnpm test:security
 ```
 
 | Cenário | O que é verificado | Arquivo |

@@ -13,6 +13,7 @@
     "prepare": "husky install",
     "test": "vitest",
     "coverage": "vitest run --coverage",
+    "test:security": "vitest run tests/security",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:push": "prisma db push",
