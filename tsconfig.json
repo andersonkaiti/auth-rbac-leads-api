@@ -26,7 +26,8 @@
       "@controllers/*": ["./src/infra/http/controllers/*"],
       "@middlewares/*": ["./src/infra/http/middlewares/*"],
       "@factories/*": ["./src/infra/http/factories/*"],
-      "@database/*": ["./src/infra/database/*"]
+      "@database/*": ["./src/infra/database/*"],
+      "@tests/*": ["./tests/*"]
     }
   }
 }
