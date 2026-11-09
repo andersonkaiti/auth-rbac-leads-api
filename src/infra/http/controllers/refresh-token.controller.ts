@@ -1,7 +1,7 @@
+import type { IController } from '@infra/http/interfaces/icontroller.ts'
 import type { RefreshTokenUseCase } from '@use-cases/refresh-token.usecase.ts'
 import type { Request, Response } from 'express'
 import { z } from 'zod'
-import type { IController } from '../interfaces/icontroller.ts'
 
 export const refreshTokenSchema = z.object({
   refreshToken: z.string(),

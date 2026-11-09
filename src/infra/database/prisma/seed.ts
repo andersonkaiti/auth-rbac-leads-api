@@ -1,5 +1,5 @@
+import { prisma } from '@database/prisma/index.ts'
 import { faker } from '@faker-js/faker'
-import { prisma } from './index.ts'
 
 const permissions = [
   { name: 'Read leads', code: 'leads:read' },

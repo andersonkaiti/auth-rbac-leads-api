@@ -1,6 +1,6 @@
+import type { IController } from '@infra/http/interfaces/icontroller.ts'
 import type { ListLeadsUseCase } from '@use-cases/list-leads.usecase.ts'
 import type { Request, Response } from 'express'
-import type { IController } from '../interfaces/icontroller.ts'
 
 export class ListLeadsController implements IController {
   constructor(private readonly listLeadsUseCase: ListLeadsUseCase) {}

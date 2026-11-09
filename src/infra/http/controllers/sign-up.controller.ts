@@ -1,7 +1,7 @@
+import type { IController } from '@infra/http/interfaces/icontroller.ts'
 import type { SignUpUseCase } from '@use-cases/sign-up.usecase.ts'
 import type { Request, Response } from 'express'
 import { z } from 'zod'
-import type { IController } from '../interfaces/icontroller.ts'
 
 export const signUpSchema = z.object({
   name: z.string().min(2),

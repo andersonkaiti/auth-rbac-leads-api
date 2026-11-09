@@ -1,4 +1,4 @@
-import type { IPermission } from '../entities/permission.entity.ts'
+import type { IPermission } from '@entities/permission.entity.ts'
 
 export interface IPermissionsRepository {
   findPermissionsByRoleId(

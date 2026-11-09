@@ -32,7 +32,7 @@ export async function setup() {
 
   execSync('pnpm prisma migrate deploy')
 
-  const { prisma } = await import('../src/infra/database/prisma/index.ts')
+  const { prisma } = await import('@database/prisma/index.ts')
 
   for (const { name, permissions } of roleDefinitions) {
     const existing = await prisma.role.findFirst({ where: { name } })

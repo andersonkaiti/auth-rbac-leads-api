@@ -1,4 +1,4 @@
-import type { IAccount } from '../entities/account.entity.ts'
+import type { IAccount } from '@entities/account.entity.ts'
 
 export interface IAccountsRepository {
   findAccountByEmail(email: string): Promise<IAccount | null>

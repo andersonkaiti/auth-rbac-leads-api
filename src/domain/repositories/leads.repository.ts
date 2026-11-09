@@ -1,4 +1,4 @@
-import type { ILead } from '../entities/lead.entity.ts'
+import type { ILead } from '@entities/lead.entity.ts'
 
 export interface ILeadsRepository {
   listLeads(): Promise<ILead[]>

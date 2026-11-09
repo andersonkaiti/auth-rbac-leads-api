@@ -1,6 +1,6 @@
+import type { IMiddleware } from '@infra/http/interfaces/imiddleware.ts'
 import type { GetRolePermissionsUseCase } from '@use-cases/get-role-permissions.usecase.ts'
 import type { NextFunction, Request, Response } from 'express'
-import type { IMiddleware } from '../interfaces/imiddleware.ts'
 
 export class AuthorizationMiddleware implements IMiddleware {
   constructor(

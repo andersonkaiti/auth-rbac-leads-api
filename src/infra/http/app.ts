@@ -2,16 +2,16 @@ import { makeAuthenticationMiddleware } from '@factories/make-authentication-mid
 import { makeAuthorizationMiddleware } from '@factories/make-authorization-middleware.factory.ts'
 import { makeCreateLeadController } from '@factories/make-create-lead-controller.factory.ts'
 import { makeListLeadsController } from '@factories/make-list-leads-controller.factory.ts'
+import { makeRefreshTokenController } from '@factories/make-refresh-token-controller.factory.ts'
 import { makeSignInController } from '@factories/make-sign-in-controller.factory.ts'
 import { makeSignUpController } from '@factories/make-sign-up-controller.factory.ts'
+import { middlewareAdapter } from '@infra/http/adapters/middleware.adapter.ts'
+import { routeAdapter } from '@infra/http/adapters/route.adapter.ts'
+import { errorHandler } from '@infra/http/error-handler.ts'
+import { generateOpenApiDocument } from '@infra/http/openapi/document.ts'
 import { apiReference } from '@scalar/express-api-reference'
 import cors from 'cors'
 import express, { type Express } from 'express'
-import { middlewareAdapter } from './adapters/middleware.adapter.ts'
-import { routeAdapter } from './adapters/route.adapter.ts'
-import { errorHandler } from './error-handler.ts'
-import { makeRefreshTokenController } from './factories/make-refresh-token-controller.factory.ts'
-import { generateOpenApiDocument } from './openapi/document.ts'
 
 export const app: Express = express()
 

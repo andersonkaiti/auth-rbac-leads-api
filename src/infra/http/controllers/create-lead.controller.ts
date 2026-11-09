@@ -1,7 +1,7 @@
+import type { IController } from '@infra/http/interfaces/icontroller.ts'
 import type { CreateLeadUseCase } from '@use-cases/create-lead.usecase.ts'
 import type { Request, Response } from 'express'
 import { z } from 'zod'
-import type { IController } from '../interfaces/icontroller.ts'
 
 export const createLeadSchema = z.object({
   name: z.string(),

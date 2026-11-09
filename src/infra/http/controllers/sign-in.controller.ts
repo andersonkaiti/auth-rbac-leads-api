@@ -1,7 +1,7 @@
+import type { IController } from '@infra/http/interfaces/icontroller.ts'
 import type { SignInUseCase } from '@use-cases/sign-in.usecase.ts'
 import type { Request, Response } from 'express'
 import { z } from 'zod'
-import type { IController } from '../interfaces/icontroller.ts'
 
 export const signInSchema = z.object({
   email: z.email().min(1),

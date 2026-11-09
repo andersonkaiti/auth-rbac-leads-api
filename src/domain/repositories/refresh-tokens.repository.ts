@@ -1,4 +1,4 @@
-import type { IRefreshToken } from '../entities/refresh-token.entity.ts'
+import type { IRefreshToken } from '@entities/refresh-token.entity.ts'
 
 export interface IRotateRefreshToken {
   incomingRefreshToken: IRefreshToken['id']

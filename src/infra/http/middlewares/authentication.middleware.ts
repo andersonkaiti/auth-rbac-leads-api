@@ -1,8 +1,8 @@
+import type { IMiddleware } from '@infra/http/interfaces/imiddleware.ts'
 import { env } from '@shared/env.ts'
 import type { NextFunction, Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
 import { z } from 'zod'
-import type { IMiddleware } from '../interfaces/imiddleware.ts'
 
 export class AuthenticationMiddleware implements IMiddleware {
   private jwtPayloadSchema = z.object({

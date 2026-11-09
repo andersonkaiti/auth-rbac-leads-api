@@ -1,9 +1,9 @@
+import { prisma } from '@database/prisma/index.ts'
 import { faker } from '@faker-js/faker'
+import { app } from '@infra/http/app.ts'
 import { hash } from 'bcryptjs'
 import request from 'supertest'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
-import { prisma } from '../../src/infra/database/prisma/index.ts'
-import { app } from '../../src/infra/http/app.ts'
 
 let userAccessToken: string
 let adminAccessToken: string
