@@ -203,3 +203,28 @@ pnpm dev
 pnpm test          # modo watch
 pnpm coverage      # com relatório de cobertura
 ```
+
+### Testes de segurança
+
+Os testes de segurança ficam em `tests/security/` e rodam junto com o restante da suíte. Para rodar só essa pasta:
+
+```bash
+pnpm exec vitest run tests/security
+```
+
+| Cenário | O que é verificado | Arquivo |
+|---------|--------------------|---------|
+| Sem token | `GET /leads` sem `Authorization` retorna 401 | `authentication.test.ts` |
+| Token adulterado | Trocar o `role` no payload mantendo a assinatura antiga retorna 401 | `authentication.test.ts` |
+| `alg: none` | Token sem assinatura (variações de caixa) retorna 401 | `authentication.test.ts` |
+| Token expirado | `exp` no passado retorna 401 | `authentication.test.ts` |
+| Refresh token | Reutilizar um refresh token já rotacionado retorna 401 | `authentication.test.ts` |
+| RBAC | USER (sem `leads:write`) não cria lead: 403 | `authorization.test.ts` |
+| Mass assignment | `roleId`/`role` enviados no `/sign-up` são ignorados (conta sempre USER) | `authorization.test.ts` |
+| SQL Injection | `' OR '1'='1' --` na senha não autentica; payload SQL no nome de um lead é gravado como texto | `sql-injection.test.ts` |
+| Enumeração de usuários | `/sign-in` com e-mail inexistente e com senha errada devolve status e corpo idênticos | `user-enumeration.test.ts` |
+| Exposição de dados | A resposta de erro do `/sign-up` não contém senha nem hash bcrypt (`$2a$`/`$2b$`) | `data-exposure.test.ts` |
+| Validação de entrada | Tipos errados, texto gigante e nome de lead vazio retornam 400; JSON malformado retorna 400 e body acima de 100kb retorna 413 | `input-validation.test.ts` |
+| Força bruta | Após 5 falhas de login por IP e e-mail, o `/sign-in` retorna 429, inclusive com a senha correta | `brute-force.test.ts` |
+
+XSS não é testado, pois a API só devolve JSON (`Content-Type: application/json`) e não renderiza HTML.
