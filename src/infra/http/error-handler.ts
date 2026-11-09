@@ -29,6 +29,20 @@ export function errorHandler(
     })
   }
 
+  const { type } = error as Error & { type?: string }
+
+  if (type === 'entity.parse.failed') {
+    return res.status(400).json({
+      error: 'Malformed JSON body',
+    })
+  }
+
+  if (type === 'entity.too.large') {
+    return res.status(413).json({
+      error: 'Payload too large',
+    })
+  }
+
   return res.status(500).json({
     error: 'Internal server error',
   })
