@@ -9,6 +9,7 @@ import { middlewareAdapter } from '@infra/http/adapters/middleware.adapter.ts'
 import { routeAdapter } from '@infra/http/adapters/route.adapter.ts'
 import { errorHandler } from '@infra/http/error-handler.ts'
 import { generateOpenApiDocument } from '@infra/http/openapi/document.ts'
+import { signInRateLimit } from '@middlewares/sign-in-rate-limit.middleware.ts'
 import { apiReference } from '@scalar/express-api-reference'
 import cors from 'cors'
 import express, { type Express } from 'express'
@@ -30,7 +31,7 @@ app.get('/docs/json', (_req, res) => {
 app.use('/docs', apiReference({ url: '/docs/json', theme: 'kepler' }))
 
 app.post('/sign-up', routeAdapter(makeSignUpController()))
-app.post('/sign-in', routeAdapter(makeSignInController()))
+app.post('/sign-in', signInRateLimit, routeAdapter(makeSignInController()))
 app.post('/refresh-token', routeAdapter(makeRefreshTokenController()))
 
 app.get(
